@@ -46,6 +46,7 @@ namespace HelloService
             app.UseRouting();
 
             app.UseNokates();
+         //   app.UseMiddleware<AuthorizationMiddleware>();
 
             // app.UseAuthorization();
 
