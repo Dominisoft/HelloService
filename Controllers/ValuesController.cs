@@ -8,13 +8,14 @@ using Dominisoft.WebCommon.Infrastructure;
 using Dominisoft.WebCommon.Models;
 using Dominisoft.WebCommon.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Routing;
+using Dominisoft.WebCommon.Infrastructure.Controllers;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HelloService.Controllers
 {
     [Route("")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ValuesController : NokatesControllerBase
     {
         private List<EndpointDataSource> endpointSources;
 

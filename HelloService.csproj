@@ -4,16 +4,26 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="System.ServiceModel.Web" Version="1.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper.Contrib" Version="2.0.78" />
+		<PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.3" />
+		<PackageReference Include="Microsoft.Web.Administration" Version="11.1.0" />
+		<PackageReference Include="MoralesLarios.Data.Dapper" Version="1.0.0.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.16.0" />
+	</ItemGroup>
 
-  <ItemGroup>
+
+	<ItemGroup>
     <Reference Include="Dominisoft.WebCommon">
       <HintPath>..\Dominisoft.WebCommon\bin\Debug\netcoreapp3.1\Dominisoft.WebCommon.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="del Version.json &amp;&amp; GenerateVersionInfo &gt;&gt; Version.json" />
+  </Target>
 
 </Project>
