@@ -9,6 +9,7 @@ using Dominisoft.WebCommon.Models;
 using Dominisoft.WebCommon.Infrastructure.Attributes;
 using Microsoft.AspNetCore.Routing;
 using Dominisoft.WebCommon.Infrastructure.Controllers;
+using Dominisoft.WebCommon.Infrastructure.CustomExceptions;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HelloService.Controllers
@@ -38,7 +39,8 @@ namespace HelloService.Controllers
 
         public string Get2(string name)
         {
-            var e = AppHelper.GetEndpoints(endpointSources);
+            if (name == "ErrorTest")
+                throw new BadRequestException("This is a test error message");
             return $"Hello {name}";
         }
 
