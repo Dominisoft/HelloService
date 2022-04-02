@@ -1,8 +1,8 @@
 {
       "version": "1.0.0.0",
-       "buildDate": "2022-03-31T16:29:34",
-       "deploymentDate": "2022-03-31T16:29:34",
+       "buildDate": "2022-04-02T06:19:25",
+       "deploymentDate": "2022-04-02T06:19:25",
        "branch": "master",
        "environment": "Development",
-       "lastCommitId": "8d35cf6255fc6abc07839514cf3dfd2854039c25"
+       "lastCommitId": "f923eeb555f7ae2a802a4a147bb2fba76a64dfde"
    }

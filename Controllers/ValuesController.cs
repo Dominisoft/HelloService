@@ -18,19 +18,13 @@ namespace HelloService.Controllers
     [ApiController]
     public class ValuesController : NokatesControllerBase
     {
-        private List<EndpointDataSource> endpointSources;
-
-        public ValuesController(IEnumerable<EndpointDataSource> endpointSources)
-        {
-            this.endpointSources = endpointSources.ToList();
-        }
 
         // GET: api/<ValuesController>
         [HttpGet]
         [EndpointGroup("Hello")]
         public string Get()
         {
-            var name = ConfigurationValues.Values["Name"];
+            ConfigurationValues.TryGetValue(out var name, "Name");
             return $"Hello {name}";
         }
         [HttpGet("{name}")]
@@ -41,6 +35,16 @@ namespace HelloService.Controllers
         {
             if (name == "ErrorTest")
                 throw new BadRequestException("This is a test error message");
+            return $"Hello {name}";
+        }
+        [HttpGet("User")]
+        [EndpointGroup("Hello")]
+
+        public string Get3()
+        {
+            var user = HttpContext.User;
+            var claims = user.Claims.ToList();
+            var name = claims.FirstOrDefault(c => c.Type == "name")?.Value;
             return $"Hello {name}";
         }
 
